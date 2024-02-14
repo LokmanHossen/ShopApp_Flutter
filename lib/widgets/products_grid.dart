@@ -14,10 +14,13 @@ class ProductsGrid extends StatelessWidget {
 
     return GridView.builder(
       padding: const EdgeInsets.all(10),
-      itemBuilder: (context, index) => ProductItem(
-        id: productsProvider[index].id,
-        title: productsProvider[index].title,
-        imageUrl: productsProvider[index].imageUrl,
+      itemBuilder: (context, index) => ChangeNotifierProvider(
+        create: (context) => productsProvider[index],
+        child: const ProductItem(
+            //   id: productsProvider[index].id,
+            //   title: productsProvider[index].title,
+            //   imageUrl: productsProvider[index].imageUrl,
+            ),
       ),
       itemCount: productsProvider.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
