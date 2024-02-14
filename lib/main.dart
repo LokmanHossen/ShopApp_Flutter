@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
           ),
           fontFamily: 'Lato',
         ),
-        home: ProductOverviewScreen(),
+        home: const ProductOverviewScreen(),
         routes: {
-          ProductDetailsScreen.routeName: (context) => ProductDetailsScreen()
+          ProductDetailsScreen.routeName: (context) => const ProductDetailsScreen()
         },
       ),
     );

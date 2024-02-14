@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/products_grid.dart';
 
 class ProductOverviewScreen extends StatelessWidget {
-  ProductOverviewScreen({super.key});
+  const ProductOverviewScreen({super.key});
 
   // final List<Product> loadProducts = [
 
@@ -16,7 +16,7 @@ class ProductOverviewScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text('MyShop'),
       ),
-      body: ProductsGrid(),
+      body: const ProductsGrid(),
     );
   }
 }

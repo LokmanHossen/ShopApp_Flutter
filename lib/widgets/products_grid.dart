@@ -5,6 +5,8 @@ import 'package:shop_app/providers/products_provider.dart';
 import 'product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
+  const ProductsGrid({super.key});
+
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<ProductsProvider>(context);
