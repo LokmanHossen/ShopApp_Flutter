@@ -15,7 +15,7 @@ class ProductsGrid extends StatelessWidget {
         showFavs ? productsData.favoriteItems : productsData.items;
 
     return GridView.builder(
-      physics: const BouncingScrollPhysics(),
+      // physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(10),
       itemBuilder: (context, index) => ChangeNotifierProvider.value(
         // create: (context) => productsProvider[index],
@@ -31,7 +31,7 @@ class ProductsGrid extends StatelessWidget {
         crossAxisCount: 2,
         childAspectRatio: 3 / 2,
         crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        mainAxisSpacing: 15,
       ),
     );
   }
