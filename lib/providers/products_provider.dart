@@ -53,7 +53,7 @@ class ProductsProvider with ChangeNotifier {
           'https://cdn.techjuice.pk/wp-content/uploads/2022/09/laptop.png',
     ),
     Product(
-      id: 'p6',
+      id: 'p7',
       title: 'Mobile Phone',
       description: 'old-mobile-phones',
       price: 1499.99,
@@ -61,7 +61,7 @@ class ProductsProvider with ChangeNotifier {
           'https://as1.ftcdn.net/v2/jpg/00/39/51/70/1000_F_39517018_sNPAc84XFW89zxxHyo8kkh168yDbWBKE.jpg',
     ),
     Product(
-      id: 'p6',
+      id: 'p8',
       title: 'Gaming Desk',
       description:
           'Gaming Desk 44.5 inch Z Shaped Home Office Workstation PC Computer Gamer Table with RGB LED Lights Mouse Pad Handle Rack Cup Holder Headphone Hook, Black',
