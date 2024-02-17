@@ -12,6 +12,7 @@ class AppDrawer extends StatelessWidget {
           AppBar(
             title: const Text('Hello Friends'),
             automaticallyImplyLeading: false,
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           const Divider(),
           ListTile(
