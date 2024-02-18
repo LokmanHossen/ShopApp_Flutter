@@ -9,6 +9,33 @@ class EditProductScreen extends StatefulWidget {
 }
 
 class _EditProductScreenState extends State<EditProductScreen> {
+  final _priceFocusNode = FocusNode();
+  final _discriotionFocusNode = FocusNode();
+  final _imageUrlController = TextEditingController();
+  final _imageUrlFocusNote = FocusNode();
+
+  @override
+  void initState() {
+    _imageUrlFocusNote.addListener(_updateImageUrl);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _imageUrlFocusNote.removeListener(_updateImageUrl);
+    _priceFocusNode.dispose();
+    _discriotionFocusNode.dispose();
+    _imageUrlController.dispose();
+    _imageUrlFocusNote.dispose();
+    super.dispose();
+  }
+
+  void _updateImageUrl() {
+    if (!_imageUrlFocusNote.hasFocus) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,17 +49,79 @@ class _EditProductScreenState extends State<EditProductScreen> {
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                    labelText: 'Title',
-                    hintText: 'type title',
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    )),
+                decoration: const InputDecoration(
+                  labelText: 'Title',
+                  hintText: 'type title',
+                  // focusedBorder: OutlineInputBorder(
+                  //   borderRadius: BorderRadius.circular(25.0),
+                  //   borderSide: BorderSide(
+                  //     color: Theme.of(context).primaryColor,
+                  //   ),
+                  // ),
+                ),
                 textInputAction: TextInputAction.next,
+                onFieldSubmitted: (_) {
+                  FocusScope.of(context).requestFocus(_priceFocusNode);
+                },
               ),
+              const SizedBox(height: 10),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Price',
+                  hintText: 'Add Price',
+                  // focusedBorder: OutlineInputBorder(
+                  //   borderRadius: BorderRadius.circular(25.0),
+                  //   borderSide: BorderSide(
+                  //     color: Theme.of(context).primaryColor,
+                  //   ),
+                  // ),
+                ),
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.number,
+                focusNode: _priceFocusNode,
+                onFieldSubmitted: (_) {
+                  FocusScope.of(context).requestFocus(_discriotionFocusNode);
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Discription'),
+                maxLines: 3,
+                keyboardType: TextInputType.multiline,
+                focusNode: _discriotionFocusNode,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    margin: const EdgeInsets.only(top: 8, right: 8),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    child: _imageUrlController.text.isEmpty
+                        ? const Text('Enter a URL')
+                        : FittedBox(
+                            fit: BoxFit.cover,
+                            child: Image.network(
+                              _imageUrlController.text,
+                            ),
+                          ),
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      decoration: const InputDecoration(labelText: 'Image URL'),
+                      keyboardType: TextInputType.url,
+                      textInputAction: TextInputAction.done,
+                      controller: _imageUrlController,
+                      focusNode: _imageUrlFocusNote,
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
