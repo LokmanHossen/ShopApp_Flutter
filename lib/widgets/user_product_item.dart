@@ -4,7 +4,7 @@ class UserProductItem extends StatelessWidget {
   final String title;
   final String imageUrl;
 
-  UserProductItem(  this.title,  this.imageUrl);
+  const UserProductItem(  this.title,  this.imageUrl, {super.key});
 
   @override
   Widget build(BuildContext context) {
