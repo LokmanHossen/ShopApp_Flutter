@@ -107,11 +107,11 @@ class ProductsProvider with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  void addProduct(Product product) {
+  Future<void> addProduct(Product product) {
     // var url = 'https://shopapp-e2bd2-default-rtdb.firebaseio.com/products.json';
     final url = Uri.https(
         'shopapp-e2bd2-default-rtdb.firebaseio.com', '/products.json');
-    http
+    return http
         .post(url,
             body: json.encode({
               'title': product.title,
