@@ -106,6 +106,16 @@ class ProductsProvider with ChangeNotifier {
   //   _showFavoritesOnly = false;
   //   notifyListeners();
   // }
+  Future<void> fetchAndProducts() async {
+    final url = Uri.parse(
+        'https://shopapp-e2bd2-default-rtdb.firebaseio.com/products.json');
+    try {
+      final response = await http.get(url);
+      print(json.decode(response.body));
+    } catch (error) {
+      rethrow;
+    }
+  }
 
   Future<void> addProduct(Product product) async {
     // var url = 'https://shopapp-e2bd2-default-rtdb.firebaseio.com/products.json';
