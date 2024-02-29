@@ -100,8 +100,8 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
       ),
       drawer: const AppDrawer(),
       body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
+          ?  Center(
+              child: CircularProgressIndicator(color: Theme.of(context).colorScheme.secondary,),
             )
           : ProductsGrid(_showOnlyFavorite),
     );
